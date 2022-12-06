@@ -1,3 +1,4 @@
 class Bidder:
-    def __init__(self):
+
+    def get_bid(self, scoreboard):
         pass
