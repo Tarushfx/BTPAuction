@@ -1,4 +1,4 @@
-from numpy.random import rand, uniform, choice
+from numpy.random import rand, uniform, choice, normal
 
 from components.Bidder import Bidder
 
@@ -7,11 +7,14 @@ class EarlyBidder(Bidder):
     def __init__(self):
         super().__init__()
         self.id = None
-        self.L = None
-        self.v = None
+        self.bid_prob_b = 0.3
+        self.watch_probability = 0.05
+        price = 1000
+        self.L = normal(loc=price, scale=price, size=1)[0]
+        self.v = normal(loc=price / 10, scale=price / 10, size=1)[0]
 
-    def set_priv_limit(self, pl):
-        self.L = pl
+    def get_bidding_probabilty(self, time):
+        return (1 - (time / self.TOTAL_AUCTION_TIME)) ** 2
 
     def set_bidder_id(self, bidder_id):
         self.id = bidder_id
@@ -21,7 +24,9 @@ class EarlyBidder(Bidder):
             return None
 
         if not self.v:
-            self.v = self.L / 10
+            self.v = self.L / 1000
+        if not self.is_bidder_watching():
+            return None
         L, v = self.L, self.v
         c = self.get_c()
 
@@ -30,13 +35,16 @@ class EarlyBidder(Bidder):
         if second_highest_bid and self.v <= second_highest_bid:
             return None
 
-        if not self.does_bidder_bid():
+        if not self.does_bidder_bid(time):
             return None
 
         return self.v
 
-    def does_bidder_bid(self):
-        return rand() < self.bid_prob_b
+    def does_bidder_bid(self, time):
+        return rand() < self.get_bidding_probabilty(time)
+
+    def is_bidder_watching(self):
+        return rand() < self.watch_probability
 
     @staticmethod
     def get_c():
