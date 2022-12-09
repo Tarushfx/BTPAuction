@@ -9,8 +9,8 @@ class Sniper(Bidder):
         self.TOTAL_AUCTION_TIME = 500
         self.bid_prob_b = 1
         self.id = None
-        price = 1000
-        self.L = normal(loc=price, scale=price, size=1)[0]
+        price = 2000
+        self.L = normal(loc=price, scale=price/3, size=1)[0]
         self.v = None
         self.watch_probability = 0.15
 

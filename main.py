@@ -19,6 +19,7 @@ if __name__ == '__main__':
         data.append(results)
     df = pd.DataFrame.from_records(data)
     print(df["second_highest_bid"].unique())
+    df.to_csv("/home/kittler/Desktop/BTPAuction/results/results.csv")
     end = time.time()
     print(f"Time taken:{end - start}")
     bins = 50

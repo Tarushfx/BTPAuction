@@ -10,7 +10,6 @@ class Shiller(Bidder):
         self.L = None
         self.bid_prob_b = 0.1
 
-
     def set_bidder_id(self, bidder_id):
         self.id = bidder_id
 

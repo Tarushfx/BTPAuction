@@ -7,7 +7,6 @@ class Auctioneer:
         self.marketprice = marketprice
         self.total_bidders = total_bidders
         self.bidders = bidders
-        seed(1)
 
 
 

@@ -9,12 +9,12 @@ class EarlyBidder(Bidder):
         self.id = None
         self.bid_prob_b = 0.3
         self.watch_probability = 0.05
-        price = 1000
-        self.L = normal(loc=price, scale=price, size=1)[0]
-        self.v = normal(loc=price / 10, scale=price / 10, size=1)[0]
+        price = 1500
+        self.L = normal(loc=price, scale=price / 3, size=1)[0]
+        self.v = normal(loc=price / 5, scale=price / 15, size=1)[0]
 
     def get_bidding_probabilty(self, time):
-        return (1 - (time / self.TOTAL_AUCTION_TIME)) ** 2
+        return 1 - (time / self.TOTAL_AUCTION_TIME)
 
     def set_bidder_id(self, bidder_id):
         self.id = bidder_id
