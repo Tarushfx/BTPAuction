@@ -19,12 +19,12 @@ All the research material we went through, in their limitations, stated they cou
 
 Snapshots of the results:
 
-<img src="results/1.png" width="605px" >
+<img src="results/1.png" width="300px" >
 <img src="results/highest_bids_hue.png" width="300px">
 <img src="results/highest_bids.png" width="300px">
 <img src="results/second_highest_bids_hue.png" width="300px">
 <img src="results/highest_bids.png" width="300px">
-<img src="results/2.png" width="605px">
+<img src="results/2.png" width="300px">
 
 Contributors:
 
